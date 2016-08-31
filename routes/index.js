@@ -6,12 +6,15 @@ var key = process.env.KEY;
 var unirest = require('unirest')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/books', function(req, res, next) {
   unirest.get('http://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=' + key)
     .end(function (response) {
-      console.log(response.body);
+      var nytBooks = response.body.results.books;
+      // console.log(nytBooks);
+      // res.end('Done');
+      res.render('index', { books: nytBooks });
     })
-  res.render('index', { title: 'Express' });
+
 });
 
 

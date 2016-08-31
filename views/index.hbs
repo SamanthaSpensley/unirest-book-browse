@@ -1,2 +1,11 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+
+{{#books}}
+  <article>
+    <h2>{{title}}</h2>
+    by <strong>{{author}}</strong>
+    <img src="{{book_image}}" />
+    <a href="{{amazon_product_url}}">Buy Book</a>
+  </article>
+{{/books}}
